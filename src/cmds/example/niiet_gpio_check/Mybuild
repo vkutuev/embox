@@ -1,0 +1,22 @@
+package embox.cmd.example.niiet_gpio_check
+
+@AutoCmd
+@Cmd(name = "niiet_gpio_check",
+	help = "Reproduce and verify the niiet_gpio driver IRQ-attach bug",
+	man = '''
+		NAME
+			niiet_gpio_check - check the niiet_gpio IRQ-attach fix
+		SYNOPSIS
+			niiet_gpio_check
+		DESCRIPTION
+			Runs two checks against the K1921VG1T GPIO interrupt path.
+			Check 1 fails on the unpatched driver (interrupt silently
+			disabled) and passes once the IRQ handler is recorded.
+		AUTHORS
+			Embox AI textbook
+	''')
+module niiet_gpio_check {
+	source "niiet_gpio_check.c"
+
+	depends embox.driver.gpio.core
+}
