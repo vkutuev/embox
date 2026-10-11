@@ -402,6 +402,7 @@ static int niiet_gpio_setup_irq(int port, uint32_t mask, uint32_t mode) {
 		if (res < 0) {
 			return res;
 		}
+		niiet_gpio_priv.gpio_irq_handler[irq_port] = niiet_gpio_irq_handler;
 	}
 
 	if (mode & GPIO_MODE_INT_EN) {
